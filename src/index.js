@@ -2,10 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import FirebaseContext from './context/firebase';
+import { firebase, FieldValue } from './library/firebase';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<App />
+		<FirebaseContext.Provider value={{ firebase, FieldValue }}>
+			<App />
+		</FirebaseContext.Provider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );
