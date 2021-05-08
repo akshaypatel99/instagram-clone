@@ -7,11 +7,11 @@ export default function useUser() {
 	const { user } = useContext(UserContext);
 
 	useEffect(() => {
-		async function getUserObjectByUserId(userId) {
-			const response = await getUserByUserId(user.uid);
+		async function getUserObjectByUserId() {
+			const [response] = await getUserByUserId(user.uid);
 			setActiveUser(response);
 		}
-		if (user?.id) {
+		if (user?.uid) {
 			getUserObjectByUserId();
 		}
 	}, [user]);
