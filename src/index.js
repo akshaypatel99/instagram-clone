@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import './index.css';
 import reportWebVitals from './reportWebVitals';
 import FirebaseContext from './context/firebase';
 import { firebase, FieldValue } from './library/firebase';
