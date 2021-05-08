@@ -2,6 +2,10 @@ import { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import UserContext from '../../context/user';
+import {
+	updateLoggedInUserFollowing,
+	updateFollowedUserFollowers,
+} from '../../services/firebase';
 
 const SuggestedProfile = ({
 	profileDocId,
@@ -12,6 +16,14 @@ const SuggestedProfile = ({
 }) => {
 	const [followed, setFollowed] = useState(false);
 	const { setActiveUser } = useContext(UserContext);
+
+	async function followUserHandler() {
+		setFollowed(true);
+		// Update the following array of the logged in user
+		await updateLoggedInUserFollowing(loggedInUserDocId, profileId, false);
+		// Update the followers array of the user who has been followUserHandler
+		await updateFollowedUserFollowers(profileDocId, userId, false);
+	}
 
 	return !followed ? (
 		<div className='flex flex-row items-center align-items justify-between'>
@@ -31,7 +43,7 @@ const SuggestedProfile = ({
 			<button
 				className='text-xs font-bold text-blue-medium'
 				type='button'
-				onClick={() => {}}
+				onClick={followUserHandler}
 			>
 				Follow
 			</button>
