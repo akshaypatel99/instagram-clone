@@ -77,6 +77,7 @@ export async function updateFollowedUserFollowers(
 }
 
 export async function getPhotos(userId, following) {
+	// [5,4,2] => following
 	const result = await firebase
 		.firestore()
 		.collection('photos')
@@ -94,8 +95,9 @@ export async function getPhotos(userId, following) {
 			if (photo.likes.includes(userId)) {
 				userLikedPhoto = true;
 			}
-
+			// photo.userId = 2
 			const user = await getUserByUserId(photo.userId);
+			// raphael
 			const { username } = user[0];
 			return { username, ...photo, userLikedPhoto };
 		})
