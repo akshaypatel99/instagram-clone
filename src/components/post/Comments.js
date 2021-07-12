@@ -6,14 +6,14 @@ import AddComment from './AddComment';
 
 const Comments = ({ docId, comments: allComments, posted, commentInput }) => {
 	const [comments, setComments] = useState(allComments);
-	console.log('comments', comments);
+
 	return (
 		<>
 			<div className='p-4 pt-1 pb-4'>
-				{comments.length >= 1 && (
+				{comments.length && (
 					<p className='text-sm text-gray-base mb-1 cursor-pointer'>
 						{' '}
-						View all {comments.length} comments
+						View all comments
 					</p>
 				)}
 				{comments.slice(0, 3).map((item) => (
