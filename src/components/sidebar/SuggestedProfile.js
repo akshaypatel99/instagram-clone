@@ -5,6 +5,7 @@ import UserContext from '../../context/user';
 import {
 	updateLoggedInUserFollowing,
 	updateFollowedUserFollowers,
+	getUserByUserId,
 } from '../../services/firebase';
 
 const SuggestedProfile = ({
@@ -23,6 +24,8 @@ const SuggestedProfile = ({
 		await updateLoggedInUserFollowing(loggedInUserDocId, profileId, false);
 		// Update the followers array of the user who has been followUserHandler
 		await updateFollowedUserFollowers(profileDocId, userId, false);
+		const [user] = await getUserByUserId(userId);
+		setActiveUser(user);
 	}
 
 	return !followed ? (
