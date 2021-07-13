@@ -13,8 +13,8 @@ const Header = ({
 		docId: profileDocId,
 		userId: profileUserId,
 		fullName,
-		followers = [],
-		following = [],
+		followers,
+		following,
 		username: profileUsername,
 	},
 }) => {

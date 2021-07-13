@@ -36,6 +36,7 @@ const SignUp = () => {
 					fullName,
 					emailAddress: emailAddress.toLowerCase(),
 					following: [],
+					followers: [],
 					dateCreated: Date.now(),
 				});
 
@@ -48,6 +49,7 @@ const SignUp = () => {
 				setError(error.message);
 			}
 		} else {
+			setUsername('');
 			setError('Username is already taken, please choose another');
 		}
 	};
@@ -87,7 +89,7 @@ const SignUp = () => {
 						<input
 							type='text'
 							aria-label='Enter your full name'
-							placeholder='Full Name'
+							placeholder='Full name'
 							className='text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2'
 							onChange={(e) => setFullName(e.target.value)}
 							value={fullName}

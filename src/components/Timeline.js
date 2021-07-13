@@ -1,11 +1,11 @@
 import { useContext } from 'react';
-import UserContext from '../context/user';
+import LoggedInUserContext from '../context/loggedInUser';
 import Skeleton from 'react-loading-skeleton';
 import usePhotos from '../hooks/usePhotos';
 import Post from './post/Post';
 
 const Timeline = () => {
-	const { user } = useContext(UserContext);
+	const { user } = useContext(LoggedInUserContext);
 	const { photos } = usePhotos(user);
 	console.log('photos', photos);
 	return (
